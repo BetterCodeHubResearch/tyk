@@ -9,10 +9,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/TykTechnologies/tyk/user"
 	"github.com/justinas/alice"
 )
 
-var schema string = `{
+var schema = `{
     "title": "Person",
     "type": "object",
     "properties": {
@@ -96,8 +97,8 @@ func TestValidateSchema(t *testing.T) {
 	}
 }
 
-func createJSONVersionedSession() *SessionState {
-	session := new(SessionState)
+func createJSONVersionedSession() *user.SessionState {
+	session := new(user.SessionState)
 	session.Rate = 10000
 	session.Allowance = session.Rate
 	session.LastCheck = time.Now().Unix()
@@ -107,7 +108,7 @@ func createJSONVersionedSession() *SessionState {
 	session.QuotaRenews = time.Now().Unix()
 	session.QuotaRemaining = 10
 	session.QuotaMax = -1
-	session.AccessRights = map[string]AccessDefinition{"jsontest": {APIName: "Tyk Test API", APIID: "jsontest", Versions: []string{"default"}}}
+	session.AccessRights = map[string]user.AccessDefinition{"jsontest": {APIName: "Tyk Test API", APIID: "jsontest", Versions: []string{"default"}}}
 	return session
 }
 
