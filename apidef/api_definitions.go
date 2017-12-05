@@ -136,9 +136,10 @@ type MethodTransformMeta struct {
 }
 
 type ValidatePathMeta struct {
-	Path         string `bson:"path" json:"path"`
-	Method       string `bson:"method" json:"method"`
-	ValidateWith string `bson:"validate_with" json:"validate_with"`
+	Path             string `bson:"path" json:"path"`
+	Method           string `bson:"method" json:"method"`
+	ValidateWith64   string `bson:"validate_with_64" json:"validate_with_64,omitempty"`
+	ValidateWithFile string `bson:"validate_with_file" json:"validate_with_file,omitempty"`
 }
 
 type ExtendedPathsSet struct {

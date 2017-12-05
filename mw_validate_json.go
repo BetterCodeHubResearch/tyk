@@ -41,7 +41,7 @@ func (k *ValidateJSON) ProcessRequest(w http.ResponseWriter, r *http.Request, _ 
 	}
 	mmeta := meta.(*apidef.ValidatePathMeta)
 
-	if mmeta.ValidateWith == "" {
+	if mmeta.ValidateWith64 == "" {
 		return serverError, 400
 
 	}
@@ -53,7 +53,7 @@ func (k *ValidateJSON) ProcessRequest(w http.ResponseWriter, r *http.Request, _ 
 		return serverError, 400
 	}
 
-	return validateJSONSchema(mmeta.ValidateWith, string(body))
+	return validateJSONSchema(mmeta.ValidateWith64, string(body))
 }
 
 func getJSONSchemaLoader(rawString string) (gojsonschema.JSONLoader, error) {
